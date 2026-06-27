@@ -95,7 +95,7 @@ Dashboard:
 ![Dashboard](screenshots/dashboard.png)
 
 Graph:
-![Graph](screenshots/graph.png)
+![Graph](screenshots/stats.png)
 
 Terminal:
 ![Terminal](screenshots/terminal.png)
