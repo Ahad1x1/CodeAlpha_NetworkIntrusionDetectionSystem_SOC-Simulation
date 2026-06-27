@@ -1,23 +1,65 @@
-# Python cache
+# ==========================
+# Python
+# ==========================
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
 
-# Virtual environment
+# Virtual Environments
 venv/
+.venv/
 env/
+ENV/
 
-# OS files
-.DS_Store
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
 
-# Logs / runtime data
-data/events.json
-
-# Flask
-instance/
-
-# IDE
+# ==========================
+# IDEs
+# ==========================
 .vscode/
 .idea/
 
-# Matplotlib cache
-*.png
+# ==========================
+# Operating System Files
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Logs
+# ==========================
+*.log
+
+# Runtime event data
+data/events.json
+
+# ==========================
+# Flask
+# ==========================
+instance/
+.flaskenv
+
+# ==========================
+# Jupyter
+# ==========================
+.ipynb_checkpoints/
+
+# ==========================
+# Testing
+# ==========================
+.pytest_cache/
+.coverage
+
+# ==========================
+# Matplotlib Cache
+# ==========================
+.matplotlib/
+
+# ==========================
+# Temporary files
+# ==========================
+*.tmp
+*.temp
