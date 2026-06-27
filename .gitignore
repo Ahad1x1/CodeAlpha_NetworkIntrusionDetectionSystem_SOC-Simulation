@@ -1,0 +1,23 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+env/
+
+# OS files
+.DS_Store
+
+# Logs / runtime data
+data/events.json
+
+# Flask
+instance/
+
+# IDE
+.vscode/
+.idea/
+
+# Matplotlib cache
+*.png

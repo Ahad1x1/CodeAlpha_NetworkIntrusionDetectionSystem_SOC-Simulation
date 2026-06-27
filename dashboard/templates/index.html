@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Operations Center</title>
+
+    <style>
+        body {
+            background-color: #0b0f14;
+            color: #00ffcc;
+            font-family: monospace;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #00ffcc;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .box {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #222;
+            background: #111821;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #222;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #111;
+            color: #00ffcc;
+        }
+
+        tr:nth-child(even) {
+            background-color: #0f1620;
+        }
+
+        .CRITICAL { color: red; font-weight: bold; }
+        .HIGH { color: orange; font-weight: bold; }
+        .MEDIUM { color: yellow; }
+        .LOW { color: lightgreen; }
+
+        .live {
+            color: #00ffcc;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.4; }
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>🛡 SECURITY OPERATIONS CENTER (SOC)</h2>
+
+<div class="box">
+    <span class="live">● LIVE MONITORING ACTIVE</span>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Type</th>
+            <th>Source IP</th>
+            <th>Message</th>
+            <th>Severity</th>
+        </tr>
+    </thead>
+
+    <tbody id="logs"></tbody>
+</table>
+
+<script>
+async function loadData() {
+    let res = await fetch("/api/events");
+    let data = await res.json();
+
+    let table = document.getElementById("logs");
+    table.innerHTML = "";
+
+    data.slice(-25).reverse().forEach(e => {
+        table.innerHTML += `
+        <tr>
+            <td>${e.time}</td>
+            <td>${e.type}</td>
+            <td>${e.source}</td>
+            <td>${e.message}</td>
+            <td class="${e.severity}">${e.severity}</td>
+        </tr>
+        `;
+    });
+}
+
+setInterval(loadData, 2000);
+loadData();
+</script>
+
+</body>
+</html>
